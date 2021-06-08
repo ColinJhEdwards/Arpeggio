@@ -6,10 +6,13 @@ import reportWebVitals from "./reportWebVitals";
 import { createStore, applyMiddleware, compose } from "redux";
 import rootReducer from "./reducers";
 import { Provider } from "react-redux";
+// thunk is needed for async await functions
 import thunk from "redux-thunk";
 
+// this variable is how we add thunk to the store sence you can only have 2 arguments
 const composeEnhancer = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
+//The root reducer is all the reducers added into one, the file is created under reducers(index.js)
 const store = createStore(rootReducer, composeEnhancer(applyMiddleware(thunk)));
 
 ReactDOM.render(
