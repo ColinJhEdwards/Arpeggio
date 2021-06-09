@@ -14,6 +14,7 @@ const gamesReducer = (state = initState, action) => {
     //When an action is used that has a type of FETCH_GAMES the state "popular/upcoming/newGames will recieve the payload from the action of gamesAction.js that has the type of fetch_games "
     case "FETCH_GAMES":
       return {
+        //Take whatever the current state is and add the following
         ...state,
         popular: action.payload.popular,
         upcoming: action.payload.upcoming,
