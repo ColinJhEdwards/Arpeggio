@@ -42,4 +42,4 @@ export const gameDetailsURL = (game_id) =>
 
 // Game screenshots
 export const gameScreenshotURL = (game_id) =>
-  `${base_url}games/${game_id}?&key=${key}/screenshots`;
+  `${base_url}games/${game_id}/screenshots?&key=${key}`;
