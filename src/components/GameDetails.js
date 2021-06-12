@@ -6,38 +6,42 @@ import { gameScreenshotURL } from "../api";
 
 const GameDetails = () => {
   //data
-  const { screen, details } = useSelector((state) => state.details);
+  const { screen, details, isLoading } = useSelector((state) => state.details);
   console.log(details);
   return (
-    <CardShadow className="card-shadow">
-      <Detail className="detail">
-        <Stats className="stats">
-          <div className="rating">
-            <h3>{details.name}</h3>
-            <p>Rating: {details.rating}</p>
-          </div>
-          <Info className="info">
-            <h3>Platforms</h3>
-            <Platforms className="platforms">
-              {details.platforms.map((data) => (
-                <h3 key={data.platform.id}>{data.platform.name}</h3>
+    <>
+      {!isLoading && (
+        <CardShadow className="card-shadow">
+          <Detail className="detail">
+            <Stats className="stats">
+              <div className="rating">
+                <h3>{details.name}</h3>
+                <p>Rating: {details.rating}</p>
+              </div>
+              <Info className="info">
+                <h3>Platforms</h3>
+                <Platforms className="platforms">
+                  {details.platforms.map((data) => (
+                    <h3 key={data.platform.id}>{data.platform.name}</h3>
+                  ))}
+                </Platforms>
+              </Info>
+            </Stats>
+            <Media className="media">
+              <img src={details.background_image} alt="image" />
+            </Media>
+            <Description className="description">
+              <p>{details.description_raw}</p>
+            </Description>
+            <div className="gallery">
+              {screen.results.map((screen) => (
+                <img src={screen.image} key={screen.id} alt="image" />
               ))}
-            </Platforms>
-          </Info>
-        </Stats>
-        <Media className="media">
-          <img src={details.background_image} alt="image" />
-        </Media>
-        <Description className="description">
-          <p>{details.description_raw}</p>
-        </Description>
-        <div className="gallery">
-          {screen.results.map((screen) => (
-            <img src={screen.image} key={screen.id} alt="image" />
-          ))}
-        </div>
-      </Detail>
-    </CardShadow>
+            </div>
+          </Detail>
+        </CardShadow>
+      )}
+    </>
   );
 };
 

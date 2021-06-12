@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { loadGames } from "../actions/gamesAction";
+import { useLocation } from "react-router-dom";
 //Components
 import Game from "../components/Game";
 import GameDetails from "../components/GameDetails";
@@ -18,9 +19,12 @@ const Home = () => {
   //Get data from state
   const { popular, newGames, upcoming } = useSelector((state) => state.games);
 
+  const location = useLocation();
+  const path = location.pathname.split("/")[2];
+
   return (
     <GameList>
-      <GameDetails />
+      {path && <GameDetails />}
       <h2>Upcoming Games</h2>
       <Games>
         {upcoming.map((game) => (

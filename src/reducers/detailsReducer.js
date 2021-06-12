@@ -1,8 +1,9 @@
 import axios from "axios";
 
 const initState = {
-  details: {},
-  screen: {},
+  details: { platforms: [] },
+  screen: { results: [] },
+  isLoading: true,
 };
 
 const detailsReducer = (state = initState, action) => {
@@ -13,7 +14,10 @@ const detailsReducer = (state = initState, action) => {
         ...state,
         details: action.payload.game,
         screen: action.payload.screen,
+        isLoading: false,
       };
+    case "LOADING_DETAIL":
+      return { ...state, isLoading: true };
     default:
       return { ...state };
   }
