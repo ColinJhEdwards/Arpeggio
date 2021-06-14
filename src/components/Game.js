@@ -9,13 +9,14 @@ import styled from "styled-components";
 import { loadDetail } from "../actions/detailAction";
 
 const Game = ({ name, released, id, image }) => {
+  const stringPathID = id.toString();
   const dispatch = useDispatch();
   const loadDetailHandler = () => {
     document.body.style.overflow = "hidden";
     dispatch(loadDetail(id));
   };
   return (
-    <StyledGame onClick={loadDetailHandler}>
+    <StyledGame layoutId={stringPathID} onClick={loadDetailHandler}>
       <Link to={`/game/${id}`}>
         <h3>{name}</h3>
         <p>{released}</p>

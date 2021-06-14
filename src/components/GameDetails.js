@@ -6,7 +6,7 @@ import { gameScreenshotURL } from "../api";
 import { useHistory } from "react-router-dom";
 import { smallImage } from "../util";
 
-const GameDetails = () => {
+const GameDetails = ({ pathId }) => {
   const history = useHistory();
   //exit detail
   const exitDetailHandler = (e) => {
@@ -23,7 +23,7 @@ const GameDetails = () => {
     <>
       {!isLoading && (
         <CardShadow className="shadow" onClick={exitDetailHandler}>
-          <Detail className="detail">
+          <Detail layoutId={pathId} className="detail">
             <Stats className="stats">
               <div className="rating">
                 <h3>{details.name}</h3>
