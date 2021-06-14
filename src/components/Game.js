@@ -10,6 +10,7 @@ import { loadDetail } from "../actions/detailAction";
 const Game = ({ name, released, id, image }) => {
   const dispatch = useDispatch();
   const loadDetailHandler = () => {
+    document.body.style.overflow = "hidden";
     dispatch(loadDetail(id));
   };
   return (
@@ -30,6 +31,7 @@ const StyledGame = styled(motion.div)`
   border-radius: 1rem;
   margin: 2rem;
   cursor: pointer;
+  overflow: hidden;
   img {
     width: 100%;
     height: 40vh;
